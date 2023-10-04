@@ -16,3 +16,13 @@ python extract_tad_feature.py \
     --model vit_giant_patch14_224 \
     --ckpt_path YOUR_PATH/vit_g_hyrbid_pt_1200e_k710_ft.pth
 ```
+
+## To use on the GPUClient cluster:
+```bash
+# to extract the 413 THUMOS videos that VideoMAEv2/ActionFormer use
+# For reproducing results from papers, use this
+python extract_tad_feature --use_actionformer_subset
+
+# To extract all videos from THUMOS'14 (ie. all of UCF101, the 1010 val and 1574 test videos)
+python extract_tad_feature 
+```

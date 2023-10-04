@@ -8,6 +8,10 @@ import torch
 from timm.models import create_model
 from torchvision import transforms
 
+import re
+from pathlib import Path
+import json
+
 # NOTE: Do not comment `import models`, it is used to register models
 import models  # noqa: F401
 from dataset.loader import get_video_loader
@@ -63,12 +67,12 @@ def get_args():
 
     parser.add_argument(
         '--data_path',
-        default='YOUR_PATH/thumos14_video',
+        default='/data/i5O/UCF101-THUMOS/',
         type=str,
         help='dataset path')
     parser.add_argument(
         '--save_path',
-        default='YOUR_PATH/thumos14_video/th14_vit_g_16_4',
+        default='/root/models/VideoMAEv2/thumos14_video/th14_vit_g_16_4',
         type=str,
         help='path for saving features')
 
@@ -80,8 +84,18 @@ def get_args():
         help='Name of model')
     parser.add_argument(
         '--ckpt_path',
-        default='YOUR_PATH/vit_g_hyrbid_pt_1200e_k710_ft.pth',
+        default='/data/i5O/pretrained/VideoMAEv2/vit_g_hybrid_pt_1200e_k710_ft.pth',
         help='load from checkpoint')
+    # TODO: make the switching system between ActionFormer subset and full UCF101-THUMOS neater
+    parser.add_argument(
+        '--use_actionformer_subset',
+        action='store_true'
+    )
+    parser.add_argument(
+        '--actionformer_subset',
+        default='/data/i5O/UCF101-THUMOS/THUMOS14/thumos/annotations/thumos14.json',
+        help='this flag finds the 413 videos for ActionFormer'
+    )
 
     return parser.parse_args()
 
@@ -102,6 +116,32 @@ def get_start_idx_range(data_set):
         raise NotImplementedError()
 
 
+def get_all_videos_in_subdirs(args):
+    """ Find all of the videos (mp4, avi) below the data path.
+    """
+
+    # list of all files in all subdirs 
+    all_files = []
+    for root, dirs, files in os.walk(args.data_path):
+        for file in files:
+            all_files.append(os.path.join(root, file)) 
+
+    # only get videos 
+    reg = re.compile(".*\.mp4|.*\.avi")
+    all_videos = list(filter(reg.search, all_files))
+
+    return all_videos
+
+
+def get_actionformer_subset(args):
+    """ Return a list of the 413 videos used for actionformer.
+    """
+    with open(args.actionformer_subset, 'r') as f:
+        data = json.load(f)
+
+    return list(data['database'].keys()) 
+
+
 def extract_feature(args):
     # preparation
     if not os.path.exists(args.save_path):
@@ -113,7 +153,9 @@ def extract_feature(args):
          Resize((224, 224))])
 
     # get video path
-    vid_list = os.listdir(args.data_path)
+    # vid_list = os.listdir(args.data_path)
+    vid_list = get_all_videos_in_subdirs(args)
+    
     random.shuffle(vid_list)
 
     # get model & load ckpt
@@ -126,7 +168,7 @@ def extract_feature(args):
         tubelet_size=2,
         drop_path_rate=0.3,
         use_mean_pooling=True)
-    ckpt = torch.load(args.ckpt_path, map_location='cpu')
+    ckpt = torch.load(args.ckpt_path, map_location='cuda') # cpu
     for model_key in ['model', 'module']:
         if model_key in ckpt:
             ckpt = ckpt[model_key]
@@ -136,16 +178,28 @@ def extract_feature(args):
     model.cuda()
 
     # extract feature
-    num_videos = len(vid_list)
+    
+    actionformer_subset = get_actionformer_subset(args)
+    num_videos = len(actionformer_subset)
+    counter = 0
+
     for idx, vid_name in enumerate(vid_list):
-        url = os.path.join(args.save_path, vid_name.split('.')[0] + '.npy')
-        if os.path.exists(url):
+        #url = os.path.join(args.save_path, vid_name.split('.')[0] + '.npy')
+        url = os.path.join(args.save_path, Path(vid_name).stem + '.npy')
+        if os.path.exists(url) or (Path(vid_name).stem not in actionformer_subset):
             continue
 
-        video_path = os.path.join(args.data_path, vid_name)
+        print(url)
+        print(vid_name)
+        video_path = vid_name # os.path.join(args.data_path, vid_name)
         vr = video_loader(video_path)
+        counter += 1
 
         feature_list = []
+        print(len(vr)) # number of frames ie 6234
+        print(len(list(start_idx_range(len(vr))))) # number of frames being used ie 1555
+        print(vr[0].shape) # size of first frame ie (180, 320, 3)=(height, width, color channels)
+        print(list(start_idx_range(len(vr)))[0:10]) # list of frames to use ie [0,4,8,12,16,...]
         for start_idx in start_idx_range(len(vr)):
             data = vr.get_batch(np.arange(start_idx, start_idx + 16)).asnumpy()
             frame = torch.from_numpy(data)  # torch.Size([16, 566, 320, 3])
@@ -154,11 +208,11 @@ def extract_feature(args):
 
             with torch.no_grad():
                 feature = model.forward_features(input_data)
-                feature_list.append(feature.cpu().numpy())
+                feature_list.append(feature.cpu().numpy()) # feature.cpu().numpy()
 
         # [N, C]
         np.save(url, np.vstack(feature_list))
-        print(f'[{idx} / {num_videos}]: save feature on {url}')
+        print(f'[{counter} / {num_videos}]: save feature on {url}')
 
 
 if __name__ == '__main__':

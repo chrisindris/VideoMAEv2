@@ -1,4 +1,15 @@
-"""Extract features for temporal action detection datasets"""
+"""Extract features for temporal action detection datasets
+
+# to extract entire THUMOS
+python extract_tad_feature.py 
+
+# to extract the 413 THUMOS videos that ActionFormer/VideoMAEv2 use
+python extract_tad_feature.py --use_actionformer_subset
+
+# to extract i-5O:
+python extract_tad_feature.py --data_set i-5O --data_path /data/i5O/i5OData/
+
+"""
 import argparse
 import os
 import random
@@ -61,7 +72,7 @@ def get_args():
     parser.add_argument(
         '--data_set',
         default='THUMOS14',
-        choices=['THUMOS14', 'FINEACTION'],
+        choices=['THUMOS14', 'FINEACTION', 'i-5O'],
         type=str,
         help='dataset')
 
@@ -86,7 +97,7 @@ def get_args():
         '--ckpt_path',
         default='/data/i5O/pretrained/VideoMAEv2/vit_g_hybrid_pt_1200e_k710_ft.pth',
         help='load from checkpoint')
-    # TODO: make the switching system between ActionFormer subset and full UCF101-THUMOS neater
+    # TODO: make a switching system + revise/cleanup so that this code can handle full THUMOS, actionformer THUMOS and i-5O without needing to modify the code
     parser.add_argument(
         '--use_actionformer_subset',
         action='store_true'
@@ -108,10 +119,15 @@ def get_start_idx_range(data_set):
     def fineaction_range(num_frames):
         return range(0, num_frames - 15, 16)
 
+    def i5O_range(num_frames):
+        return range(0, num_frames - 15, 4)
+
     if data_set == 'THUMOS14':
         return thumos14_range
     elif data_set == 'FINEACTION':
         return fineaction_range
+    elif data_set == 'i-5O':
+        return i5O_range
     else:
         raise NotImplementedError()
 
@@ -127,7 +143,8 @@ def get_all_videos_in_subdirs(args):
             all_files.append(os.path.join(root, file)) 
 
     # only get videos 
-    reg = re.compile(".*\.mp4|.*\.avi")
+    #reg = re.compile(".*\.mp4|.*\.avi")
+    reg = re.compile(".*\.avi|(?=.*\.mp4)(?=.*^(?!.*~))") # includes .mp4, excludes .mp4~
     all_videos = list(filter(reg.search, all_files))
 
     return all_videos
@@ -155,6 +172,8 @@ def extract_feature(args):
     # get video path
     # vid_list = os.listdir(args.data_path)
     vid_list = get_all_videos_in_subdirs(args)
+    print(len(np.unique(vid_list)))
+    print(vid_list[0:10])
     
     random.shuffle(vid_list)
 
@@ -186,7 +205,9 @@ def extract_feature(args):
     for idx, vid_name in enumerate(vid_list):
         #url = os.path.join(args.save_path, vid_name.split('.')[0] + '.npy')
         url = os.path.join(args.save_path, Path(vid_name).stem + '.npy')
-        if os.path.exists(url) or (Path(vid_name).stem not in actionformer_subset):
+
+        # cases to ignore:
+        if os.path.exists(url) or (args.use_actionformer_subset and (Path(vid_name).stem not in actionformer_subset)):
             continue
 
         print(url)

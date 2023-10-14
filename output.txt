@@ -1,0 +1,590 @@
+(venv_VideoMAEv2) root@6c970ba04703:~/models/VideoMAEv2# python extract_tad_feature.py --data_set i-5O --data_path /data/i5O/i5OData/undercover-left/ --save_path ~/models/VideoMAEv2/i5O/
+563
+['/data/i5O/i5OData/undercover-left/videos/20220516/131009.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/132052.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/132513.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/112059.mp4', '/data/i5O/i5O
+Data/undercover-left/videos/20220516/095913.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/125345.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/091945.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/172239.mp4', '/data/i5O/i5OData/undercover
+-left/videos/20220516/091836.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/075508.mp4']
+/root/models/VideoMAEv2/i5O/125024.npy
+/data/i5O/i5OData/undercover-left/videos/20230315/125024.mp4
+2775
+690
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[1 / 412]: save feature on /root/models/VideoMAEv2/i5O/125024.npy
+/root/models/VideoMAEv2/i5O/073832.npy
+/data/i5O/i5OData/undercover-left/videos/20220901/073832.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[2 / 412]: save feature on /root/models/VideoMAEv2/i5O/073832.npy
+/root/models/VideoMAEv2/i5O/202738.npy
+/data/i5O/i5OData/undercover-left/videos/20230321/202738.mp4
+2765
+688
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[3 / 412]: save feature on /root/models/VideoMAEv2/i5O/202738.npy
+/root/models/VideoMAEv2/i5O/101546.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/101546.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[4 / 412]: save feature on /root/models/VideoMAEv2/i5O/101546.npy
+/root/models/VideoMAEv2/i5O/122520.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/122520.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[5 / 412]: save feature on /root/models/VideoMAEv2/i5O/122520.npy
+/root/models/VideoMAEv2/i5O/220840.npy
+/data/i5O/i5OData/undercover-left/videos/20230321/220840.mp4
+2812
+700
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[6 / 412]: save feature on /root/models/VideoMAEv2/i5O/220840.npy
+/root/models/VideoMAEv2/i5O/170917.npy
+/data/i5O/i5OData/undercover-left/videos/20220613/170917.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[7 / 412]: save feature on /root/models/VideoMAEv2/i5O/170917.npy
+/root/models/VideoMAEv2/i5O/132846.npy
+/data/i5O/i5OData/undercover-left/videos/20230322/132846.mp4
+2803
+697
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[8 / 412]: save feature on /root/models/VideoMAEv2/i5O/132846.npy
+/root/models/VideoMAEv2/i5O/080845.npy
+/data/i5O/i5OData/undercover-left/videos/20230317/080845.mp4
+2798
+696
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[9 / 412]: save feature on /root/models/VideoMAEv2/i5O/080845.npy
+/root/models/VideoMAEv2/i5O/122913.npy
+/data/i5O/i5OData/undercover-left/videos/20220607/122913.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[10 / 412]: save feature on /root/models/VideoMAEv2/i5O/122913.npy
+/root/models/VideoMAEv2/i5O/194804.npy
+/data/i5O/i5OData/undercover-left/videos/20220413/194804.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[11 / 412]: save feature on /root/models/VideoMAEv2/i5O/194804.npy
+/root/models/VideoMAEv2/i5O/065618.npy
+/data/i5O/i5OData/undercover-left/videos/20220919/065618.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[12 / 412]: save feature on /root/models/VideoMAEv2/i5O/065618.npy
+/root/models/VideoMAEv2/i5O/193319.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/193319.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[13 / 412]: save feature on /root/models/VideoMAEv2/i5O/193319.npy
+/root/models/VideoMAEv2/i5O/101051.npy
+/data/i5O/i5OData/undercover-left/videos/20220809/101051.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[14 / 412]: save feature on /root/models/VideoMAEv2/i5O/101051.npy
+/root/models/VideoMAEv2/i5O/080701.npy
+/data/i5O/i5OData/undercover-left/videos/20220926/080701.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[15 / 412]: save feature on /root/models/VideoMAEv2/i5O/080701.npy
+/root/models/VideoMAEv2/i5O/082536.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/082536.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[16 / 412]: save feature on /root/models/VideoMAEv2/i5O/082536.npy
+/root/models/VideoMAEv2/i5O/150031.npy
+/data/i5O/i5OData/undercover-left/videos/20220825/150031.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[17 / 412]: save feature on /root/models/VideoMAEv2/i5O/150031.npy
+/root/models/VideoMAEv2/i5O/101223.npy
+/data/i5O/i5OData/undercover-left/videos/20220608/101223.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[18 / 412]: save feature on /root/models/VideoMAEv2/i5O/101223.npy
+/root/models/VideoMAEv2/i5O/124724.npy
+/data/i5O/i5OData/undercover-left/videos/20220607/124724.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[19 / 412]: save feature on /root/models/VideoMAEv2/i5O/124724.npy
+/root/models/VideoMAEv2/i5O/185121.npy
+/data/i5O/i5OData/undercover-left/videos/20220415/185121.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[20 / 412]: save feature on /root/models/VideoMAEv2/i5O/185121.npy
+/root/models/VideoMAEv2/i5O/095913.npy
+/data/i5O/i5OData/undercover-left/videos/20220516/095913.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[21 / 412]: save feature on /root/models/VideoMAEv2/i5O/095913.npy
+/root/models/VideoMAEv2/i5O/110511.npy
+/data/i5O/i5OData/undercover-left/videos/20220822/110511.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[22 / 412]: save feature on /root/models/VideoMAEv2/i5O/110511.npy
+/root/models/VideoMAEv2/i5O/094705.npy
+/data/i5O/i5OData/undercover-left/videos/20220915/094705.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[23 / 412]: save feature on /root/models/VideoMAEv2/i5O/094705.npy
+/root/models/VideoMAEv2/i5O/081102.npy
+/data/i5O/i5OData/undercover-left/videos/20230410/081102.mp4
+1135
+280
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[24 / 412]: save feature on /root/models/VideoMAEv2/i5O/081102.npy
+/root/models/VideoMAEv2/i5O/103931.npy
+/data/i5O/i5OData/undercover-left/videos/20230324/103931.mp4
+1681
+417
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[25 / 412]: save feature on /root/models/VideoMAEv2/i5O/103931.npy
+/root/models/VideoMAEv2/i5O/164605.npy
+/data/i5O/i5OData/undercover-left/videos/20220809/164605.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[26 / 412]: save feature on /root/models/VideoMAEv2/i5O/164605.npy
+/root/models/VideoMAEv2/i5O/083811.npy
+/data/i5O/i5OData/undercover-left/videos/20220513/083811.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[27 / 412]: save feature on /root/models/VideoMAEv2/i5O/083811.npy
+/root/models/VideoMAEv2/i5O/074307.npy
+/data/i5O/i5OData/undercover-left/videos/20220412/074307.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[28 / 412]: save feature on /root/models/VideoMAEv2/i5O/074307.npy
+/root/models/VideoMAEv2/i5O/100847.npy
+/data/i5O/i5OData/undercover-left/videos/20220513/100847.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[29 / 412]: save feature on /root/models/VideoMAEv2/i5O/100847.npy
+/root/models/VideoMAEv2/i5O/073116.npy
+/data/i5O/i5OData/undercover-left/videos/20220415/073116.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[30 / 412]: save feature on /root/models/VideoMAEv2/i5O/073116.npy
+/root/models/VideoMAEv2/i5O/193620.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/193620.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[31 / 412]: save feature on /root/models/VideoMAEv2/i5O/193620.npy
+/root/models/VideoMAEv2/i5O/195112.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/195112.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[32 / 412]: save feature on /root/models/VideoMAEv2/i5O/195112.npy
+/root/models/VideoMAEv2/i5O/070031.npy
+/data/i5O/i5OData/undercover-left/videos/20230328/070031.mp4
+1704
+423
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[33 / 412]: save feature on /root/models/VideoMAEv2/i5O/070031.npy
+/root/models/VideoMAEv2/i5O/132032.npy
+/data/i5O/i5OData/undercover-left/videos/20220908/132032.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[34 / 412]: save feature on /root/models/VideoMAEv2/i5O/132032.npy
+/root/models/VideoMAEv2/i5O/085414.npy
+/data/i5O/i5OData/undercover-left/videos/20220608/085414.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[35 / 412]: save feature on /root/models/VideoMAEv2/i5O/085414.npy
+/root/models/VideoMAEv2/i5O/133558.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/133558.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[36 / 412]: save feature on /root/models/VideoMAEv2/i5O/133558.npy
+/root/models/VideoMAEv2/i5O/135649.npy
+/data/i5O/i5OData/undercover-left/videos/20220517/135649.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[37 / 412]: save feature on /root/models/VideoMAEv2/i5O/135649.npy
+/root/models/VideoMAEv2/i5O/170743.npy
+/data/i5O/i5OData/undercover-left/videos/20220912/170743.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+
+---- Switched to using screen -r extract_i5O_feature
+
+(venv_VideoMAEv2) root@6c970ba04703:~/models/VideoMAEv2# python extract_tad_feature.py --data_set i-5O --data_path /data/i5O/i5OData/undercover-left/ --save_path ~/models/VideoMAEv2/i5O/
+563
+['/data/i5O/i5OData/undercover-left/videos/20220516/131009.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/132052.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/132513.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/112059.mp4', '/data/i5O/i5O
+Data/undercover-left/videos/20220516/095913.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/125345.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/091945.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/172239.mp4', '/data/i5O/i5OData/undercover
+-left/videos/20220516/091836.mp4', '/data/i5O/i5OData/undercover-left/videos/20220516/075508.mp4']
+/root/models/VideoMAEv2/i5O/065124.npy
+/data/i5O/i5OData/undercover-left/videos/20220727/065124.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[1 / 563]: save feature on /root/models/VideoMAEv2/i5O/065124.npy
+/root/models/VideoMAEv2/i5O/133551.npy
+/data/i5O/i5OData/undercover-left/videos/20220809/133551.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[2 / 563]: save feature on /root/models/VideoMAEv2/i5O/133551.npy
+/root/models/VideoMAEv2/i5O/173024.npy
+/data/i5O/i5OData/undercover-left/videos/20220413/173024.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[3 / 563]: save feature on /root/models/VideoMAEv2/i5O/173024.npy
+/root/models/VideoMAEv2/i5O/110016.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/110016.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[4 / 563]: save feature on /root/models/VideoMAEv2/i5O/110016.npy
+/root/models/VideoMAEv2/i5O/154937.npy
+/data/i5O/i5OData/undercover-left/videos/20230321/154937.mp4
+2822
+702
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[5 / 563]: save feature on /root/models/VideoMAEv2/i5O/154937.npy
+/root/models/VideoMAEv2/i5O/135120.npy
+/data/i5O/i5OData/undercover-left/videos/20220718/135120.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[6 / 563]: save feature on /root/models/VideoMAEv2/i5O/135120.npy
+/root/models/VideoMAEv2/i5O/191740.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/191740.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[7 / 563]: save feature on /root/models/VideoMAEv2/i5O/191740.npy
+/root/models/VideoMAEv2/i5O/200905.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/200905.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[8 / 563]: save feature on /root/models/VideoMAEv2/i5O/200905.npy
+/root/models/VideoMAEv2/i5O/070744.npy
+/data/i5O/i5OData/undercover-left/videos/20220825/070744.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[9 / 412]: save feature on /root/models/VideoMAEv2/i5O/080845.npy
+/root/models/VideoMAEv2/i5O/122913.npy
+/data/i5O/i5OData/undercover-left/videos/20220607/122913.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[10 / 412]: save feature on /root/models/VideoMAEv2/i5O/122913.npy
+/root/models/VideoMAEv2/i5O/194804.npy
+/data/i5O/i5OData/undercover-left/videos/20220413/194804.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[11 / 412]: save feature on /root/models/VideoMAEv2/i5O/194804.npy
+/root/models/VideoMAEv2/i5O/065618.npy
+/data/i5O/i5OData/undercover-left/videos/20220919/065618.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[12 / 412]: save feature on /root/models/VideoMAEv2/i5O/065618.npy
+/root/models/VideoMAEv2/i5O/193319.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/193319.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[13 / 412]: save feature on /root/models/VideoMAEv2/i5O/193319.npy
+/root/models/VideoMAEv2/i5O/101051.npy
+/data/i5O/i5OData/undercover-left/videos/20220809/101051.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[14 / 412]: save feature on /root/models/VideoMAEv2/i5O/101051.npy
+/root/models/VideoMAEv2/i5O/080701.npy
+/data/i5O/i5OData/undercover-left/videos/20220926/080701.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[15 / 412]: save feature on /root/models/VideoMAEv2/i5O/080701.npy
+/root/models/VideoMAEv2/i5O/082536.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/082536.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[16 / 412]: save feature on /root/models/VideoMAEv2/i5O/082536.npy
+/root/models/VideoMAEv2/i5O/150031.npy
+/data/i5O/i5OData/undercover-left/videos/20220825/150031.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[17 / 412]: save feature on /root/models/VideoMAEv2/i5O/150031.npy
+/root/models/VideoMAEv2/i5O/101223.npy
+/data/i5O/i5OData/undercover-left/videos/20220608/101223.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[18 / 412]: save feature on /root/models/VideoMAEv2/i5O/101223.npy
+/root/models/VideoMAEv2/i5O/124724.npy
+/data/i5O/i5OData/undercover-left/videos/20220607/124724.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[19 / 412]: save feature on /root/models/VideoMAEv2/i5O/124724.npy
+/root/models/VideoMAEv2/i5O/185121.npy
+/data/i5O/i5OData/undercover-left/videos/20220415/185121.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[20 / 412]: save feature on /root/models/VideoMAEv2/i5O/185121.npy
+/root/models/VideoMAEv2/i5O/095913.npy
+/data/i5O/i5OData/undercover-left/videos/20220516/095913.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[21 / 412]: save feature on /root/models/VideoMAEv2/i5O/095913.npy
+/root/models/VideoMAEv2/i5O/110511.npy
+/data/i5O/i5OData/undercover-left/videos/20220822/110511.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[22 / 412]: save feature on /root/models/VideoMAEv2/i5O/110511.npy
+/root/models/VideoMAEv2/i5O/094705.npy
+/data/i5O/i5OData/undercover-left/videos/20220915/094705.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[23 / 412]: save feature on /root/models/VideoMAEv2/i5O/094705.npy
+/root/models/VideoMAEv2/i5O/081102.npy
+/data/i5O/i5OData/undercover-left/videos/20230410/081102.mp4
+1135
+280
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[24 / 412]: save feature on /root/models/VideoMAEv2/i5O/081102.npy
+/root/models/VideoMAEv2/i5O/103931.npy
+/data/i5O/i5OData/undercover-left/videos/20230324/103931.mp4
+1681
+417
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[25 / 412]: save feature on /root/models/VideoMAEv2/i5O/103931.npy
+/root/models/VideoMAEv2/i5O/164605.npy
+/data/i5O/i5OData/undercover-left/videos/20220809/164605.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[26 / 412]: save feature on /root/models/VideoMAEv2/i5O/164605.npy
+/root/models/VideoMAEv2/i5O/083811.npy
+/data/i5O/i5OData/undercover-left/videos/20220513/083811.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[27 / 412]: save feature on /root/models/VideoMAEv2/i5O/083811.npy
+/root/models/VideoMAEv2/i5O/074307.npy
+/data/i5O/i5OData/undercover-left/videos/20220412/074307.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[28 / 412]: save feature on /root/models/VideoMAEv2/i5O/074307.npy
+/root/models/VideoMAEv2/i5O/100847.npy
+/data/i5O/i5OData/undercover-left/videos/20220513/100847.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[29 / 412]: save feature on /root/models/VideoMAEv2/i5O/100847.npy
+/root/models/VideoMAEv2/i5O/073116.npy
+/data/i5O/i5OData/undercover-left/videos/20220415/073116.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[30 / 412]: save feature on /root/models/VideoMAEv2/i5O/073116.npy
+/root/models/VideoMAEv2/i5O/193620.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/193620.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[31 / 412]: save feature on /root/models/VideoMAEv2/i5O/193620.npy
+/root/models/VideoMAEv2/i5O/195112.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/195112.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[32 / 412]: save feature on /root/models/VideoMAEv2/i5O/195112.npy
+/root/models/VideoMAEv2/i5O/070031.npy
+/data/i5O/i5OData/undercover-left/videos/20230328/070031.mp4
+1704
+423
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[33 / 412]: save feature on /root/models/VideoMAEv2/i5O/070031.npy
+/root/models/VideoMAEv2/i5O/132032.npy
+/data/i5O/i5OData/undercover-left/videos/20220908/132032.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[34 / 412]: save feature on /root/models/VideoMAEv2/i5O/132032.npy
+/root/models/VideoMAEv2/i5O/085414.npy
+/data/i5O/i5OData/undercover-left/videos/20220608/085414.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[35 / 412]: save feature on /root/models/VideoMAEv2/i5O/085414.npy
+/root/models/VideoMAEv2/i5O/133558.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/133558.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[36 / 412]: save feature on /root/models/VideoMAEv2/i5O/133558.npy
+/root/models/VideoMAEv2/i5O/135649.npy
+/data/i5O/i5OData/undercover-left/videos/20220517/135649.mp4
+600
+147
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[37 / 412]: save feature on /root/models/VideoMAEv2/i5O/135649.npy
+/root/models/VideoMAEv2/i5O/170743.npy
+/data/i5O/i5OData/undercover-left/videos/20220912/170743.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+^CTraceback (most recent call last):
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[73 / 563]: save feature on /root/models/VideoMAEv2/i5O/110410.npy
+/root/models/VideoMAEv2/i5O/215314.npy
+/data/i5O/i5OData/undercover-left/videos/20220414/215314.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[74 / 563]: save feature on /root/models/VideoMAEv2/i5O/215314.npy
+/root/models/VideoMAEv2/i5O/092922.npy
+/data/i5O/i5OData/undercover-left/videos/20230315/092922.mp4
+2767
+688
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[75 / 563]: save feature on /root/models/VideoMAEv2/i5O/092922.npy
+/root/models/VideoMAEv2/i5O/091724.npy
+/data/i5O/i5OData/undercover-left/videos/20230320/091724.mp4
+2807
+698
+(720, 1280, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[96 / 563]: save feature on /root/models/VideoMAEv2/i5O/185556.npy
+/root/models/VideoMAEv2/i5O/124705.npy
+/data/i5O/i5OData/undercover-left/videos/20220418/124705.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[97 / 563]: save feature on /root/models/VideoMAEv2/i5O/124705.npy
+/root/models/VideoMAEv2/i5O/141729.npy
+/data/i5O/i5OData/undercover-left/videos/20220901/141729.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+[98 / 563]: save feature on /root/models/VideoMAEv2/i5O/141729.npy
+/root/models/VideoMAEv2/i5O/204935.npy
+/data/i5O/i5OData/undercover-left/videos/20220413/204935.mp4
+1200
+297
+(720, 1080, 3)
+[0, 4, 8, 12, 16, 20, 24, 28, 32, 36]

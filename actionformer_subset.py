@@ -4,6 +4,7 @@
 import argparse
 import os
 from pathlib import Path
+import shutil
 
 from extract_tad_feature import get_actionformer_subset
 
@@ -26,7 +27,7 @@ def get_args():
 
     parser.add_argument(
         '--features_path',
-        default='/root/models/VideoMAEv2/thumos14_video/th14_vit_g_16_4/',
+        default='/root/models/VideoMAEv2/thumos14_video/th14_vit_g_16_4/', # where VideoMAEv2 was extracting features to.
         type=str, 
         help='path to the .npy features we are working with'
     )
@@ -40,11 +41,20 @@ def get_args():
     parser.add_argument(
         '--operation',
         default='size_of_subset',
-        choices=['count_all_extracted_features', 'size_of_subset', 'move', 'count_extracted_features'],
+        choices=['count_all_extracted_features', 'size_of_subset', 'move', 'count_extracted_features', 'get_subset', 'get_extracted_features'],
         help='choose operation'
     )
 
     return parser.parse_args()
+
+
+def get_subset(args):
+    
+    lst = get_actionformer_subset(args)
+    for x in lst:
+        print(x)
+
+    return None
 
 
 def size_of_subset(args):
@@ -64,10 +74,15 @@ def count_extracted_features(args):
     return len(get_extracted_features(args))
 
 def move(args):
-    #TODO:
-    print("WIP")
+    subset_list = get_actionformer_subset(args)
+    dest_dir = "/root/models/VideoMAEv2/thumos14_video/th14_vit_g_16_4-actionformer-subset/"
+    for f in subset_list:
+        shutil.move(args.features_path + f + ".npy", os.path.join(dest_dir, f + ".npy"))
 
 
 if __name__ == '__main__':
     args = get_args()
-    print(globals()[args.operation](args))
+
+    out = globals()[args.operation](args)
+    if out:
+        print(out)

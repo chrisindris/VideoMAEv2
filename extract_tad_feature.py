@@ -97,7 +97,7 @@ def get_args():
         '--ckpt_path',
         default='/data/i5O/pretrained/VideoMAEv2/vit_g_hybrid_pt_1200e_k710_ft.pth',
         help='load from checkpoint')
-    # TODO: make a switching system + revise/cleanup so that this code can handle full THUMOS, actionformer THUMOS and i-5O without needing to modify the code
+
     parser.add_argument(
         '--use_actionformer_subset',
         action='store_true'
@@ -197,14 +197,20 @@ def extract_feature(args):
     model.cuda()
 
     # extract feature
+   
     
-    actionformer_subset = get_actionformer_subset(args)
-    num_videos = len(actionformer_subset)
+    num_videos = len(vid_list)
+    
+    if args.use_actionformer_subset:
+        actionformer_subset = get_actionformer_subset(args)
+        num_videos = len(actionformer_subset)
+    
+
     counter = 0
 
     for idx, vid_name in enumerate(vid_list):
         #url = os.path.join(args.save_path, vid_name.split('.')[0] + '.npy')
-        url = os.path.join(args.save_path, Path(vid_name).stem + '.npy')
+        url = os.path.join(args.save_path, Path(vid_name).stem + '.npy') #TODO: convert Path(vid_name).stem -> vid_name so that they are kept in their respective folders
 
         # cases to ignore:
         if os.path.exists(url) or (args.use_actionformer_subset and (Path(vid_name).stem not in actionformer_subset)):

@@ -71,19 +71,19 @@ def get_args():
 
     parser.add_argument(
         '--data_set',
-        default='THUMOS14',
+        default='i-5O',
         choices=['THUMOS14', 'FINEACTION', 'i-5O'],
         type=str,
         help='dataset')
 
     parser.add_argument(
         '--data_path',
-        default='/data/i5O/UCF101-THUMOS/',
+        default='/data/i5O/i5OData/',
         type=str,
         help='dataset path')
     parser.add_argument(
         '--save_path',
-        default='/root/models/VideoMAEv2/thumos14_video/th14_vit_g_16_4',
+        default='/root/models/VideoMAEv2/i5O_with_10_epochs_finetune/',
         type=str,
         help='path for saving features')
 
@@ -95,7 +95,7 @@ def get_args():
         help='Name of model')
     parser.add_argument(
         '--ckpt_path',
-        default='/data/i5O/pretrained/VideoMAEv2/vit_g_hybrid_pt_1200e_k710_ft.pth',
+        default='/data/i5O/finetuned/i5O/vit_g_hybrid_pt_1200e_k710_it_i5O_ft/checkpoint-best/mp_rank_00_model_states.pt',
         help='load from checkpoint')
 
     parser.add_argument(
@@ -144,7 +144,7 @@ def get_all_videos_in_subdirs(args):
 
     # only get videos 
     #reg = re.compile(".*\.mp4|.*\.avi")
-    reg = re.compile(".*\.avi|(?=.*\.mp4)(?=.*^(?!.*~))") # includes .mp4, excludes .mp4~
+    reg = re.compile(".*\.avi|(?=.*videos.*\.mp4)(?=.*^(?!.*~))") # includes .mp4, excludes .mp4~
     all_videos = list(filter(reg.search, all_files))
 
     return all_videos
@@ -175,14 +175,14 @@ def extract_feature(args):
     print(len(np.unique(vid_list)))
     print(vid_list[0:10])
     
-    random.shuffle(vid_list)
+    #random.shuffle(vid_list)
 
     # get model & load ckpt
     model = create_model(
         args.model,
         img_size=224,
         pretrained=False,
-        num_classes=710,
+        num_classes=20,
         all_frames=16,
         tubelet_size=2,
         drop_path_rate=0.3,
@@ -206,18 +206,31 @@ def extract_feature(args):
         num_videos = len(actionformer_subset)
     
 
+
+    if not os.path.exists(args.save_path):
+        os.mkdir(args.save_path)
+
     counter = 0
 
     for idx, vid_name in enumerate(vid_list):
         #url = os.path.join(args.save_path, vid_name.split('.')[0] + '.npy')
-        url = os.path.join(args.save_path, Path(vid_name).stem + '.npy') #TODO: convert Path(vid_name).stem -> vid_name so that they are kept in their respective folders
+
+
+        # From the vid_name, get the output path (keep it in its respective folder)
+        m = re.search(args.data_path + '(.*)/videos/(.*)/(.*).mp4', vid_name)
+        side = m.group(1)
+        dir_name = m.group(2)
+        base_name = m.group(3)
+
+        url = os.path.join(args.save_path, side + '_' + dir_name + '_' + base_name + '.npy') #TODO: convert Path(vid_name).stem -> vid_name so that they are kept in their respective folders
 
         # cases to ignore:
         if os.path.exists(url) or (args.use_actionformer_subset and (Path(vid_name).stem not in actionformer_subset)):
             continue
 
-        print(url)
-        print(vid_name)
+        print("url =", url)
+        print("vid_name =", vid_name)
+
         video_path = vid_name # os.path.join(args.data_path, vid_name)
         vr = video_loader(video_path)
         counter += 1

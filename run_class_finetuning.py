@@ -317,7 +317,7 @@ def get_args():
         '--data_set',
         default='Kinetics-400',
         choices=[
-            'Kinetics-400', 'Kinetics-600', 'Kinetics-700', 'SSV2', 'UCF101',
+            'i5O-trimmed', 'Kinetics-400', 'Kinetics-600', 'Kinetics-700', 'SSV2', 'UCF101',
             'HMDB51', 'Diving48', 'Kinetics-710', 'MIT'
         ],
         type=str,

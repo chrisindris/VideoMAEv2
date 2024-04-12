@@ -3,3 +3,6 @@ venv_VideoMAEv2/
 thumos14_video/
 *.pyc
 i5O/
+out/
+out_small/
+model_zoo/

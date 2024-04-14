@@ -15,6 +15,7 @@ import os
 import random
 
 import numpy as np
+from numpy.core.shape_base import stack
 import torch
 from timm.models import create_model
 from torchvision import transforms
@@ -104,27 +105,76 @@ def get_args():
         help="this flag finds the 413 videos for ActionFormer",
     )
 
+    parser.add_argument(
+        "--device",
+        default="cuda",
+        type=str,
+        help="GPU to use. cuda (default), cuda:0, cuda:1.",
+    )
+
+    parser.add_argument(
+        "--step_size",
+        default=None,
+        help="step size for extraction. Defaults: 4 for thumos14 and i5O, 16 for fineaction.",
+    )
+
+    parser.add_argument("--stack_size", default=None, help="size of clip to use.")
+
+    # Indexing
+
+    parser.add_argument(
+        "--num_shards",
+        default=1,
+        type=int,
+        help="for distributed extraction, specify the number of shards to partition the dataset into for extraction.",
+    )
+
+    parser.add_argument(
+        "--shard_id",
+        default=0,
+        type=int,
+        help="specify the role of each running of this script",
+    )
+
+    parser.add_argument(
+        "--start_index",
+        default=0,
+        help="specify the video to start extracting directly.",
+    )
+
+    parser.add_argument(
+        "--end_index",
+        default=-1,
+        help="specify the video to end extracting directly.",
+    )
+
     return parser.parse_args()
 
 
 def get_start_idx_range(data_set):
-    def thumos14_range(num_frames):
-        return range(0, num_frames - 15, 4)
+    stack_size_minus_one = (args.stack_size or 16) - 1
+    step_size = args.step_size or (16 if data_set == "FINEACTION" else 4)
 
-    def fineaction_range(num_frames):
-        return range(0, num_frames - 15, 16)
+    return lambda num_frames: range(0, num_frames - stack_size_minus_one, step_size)
 
-    def i5O_range(num_frames):
-        return range(0, num_frames - 15, 4)
-
-    if data_set == "THUMOS14":
-        return thumos14_range
-    elif data_set == "FINEACTION":
-        return fineaction_range
-    elif data_set == "i-5O":
-        return i5O_range
-    else:
-        raise NotImplementedError()
+    # def get_start_idx_range(data_set):
+    #    def thumos14_range(num_frames):
+    #        return range(0, num_frames - 15, 4)
+    #
+    #    def fineaction_range(num_frames):
+    #        return range(0, num_frames - 15, 16)
+    #
+    #    def i5O_range(num_frames):
+    #        return range(0, num_frames - 15, 4)
+    #
+    #    if data_set == "THUMOS14":
+    #        return thumos14_range
+    #    elif data_set == "FINEACTION":
+    #        return fineaction_range
+    #    elif data_set == "i-5O":
+    #        return i5O_range
+    #    else:
+    #        raise NotImplementedError()
 
 
 def get_all_videos_in_subdirs(args):
@@ -167,6 +217,31 @@ def extract_feature(args):
     # get video path
     # vid_list = os.listdir(args.data_path)
     vid_list = get_all_videos_in_subdirs(args)
+
+    # -- Filter the vid list --
+    # filter out videos which already exist in the output directory
+    for vid_name in np.unique(vid_list):
+        m = re.search(args.data_path + "(.*)/videos_simplecrop/(.*)/(.*).mp4", vid_name)
+        side = m.group(1)
+        dir_name = m.group(2)
+        base_name = m.group(3)
+
+        url = os.path.join(
+            args.save_path, side + "_" + dir_name + "_" + base_name + ".npy"
+        )
+        # print(url)
+
+        if os.path.exists(url):
+            print(vid_name + " already extracted, skipping...")
+            vid_list.remove(vid_name)
+
+    # further filter
+    if (args.start_index, args.end_index) != (0, -1):
+        vid_list = vid_list[args.start_index : args.end_index]
+    elif args.num_shards != 1:
+        shards = np.linspace(0, len(vid_list), args.num_shards + 1).astype(int)
+        vid_list = vid_list[shards[args.shard_id] : shards[args.shard_id + 1]]
+
     print(len(np.unique(vid_list)))
     print(vid_list[0:10])
 
@@ -178,12 +253,12 @@ def extract_feature(args):
         img_size=224,
         pretrained=False,
         num_classes=710,  # i-5O has only 20 classes; but since feature extraction is headless (no classification at the end) and no training happens here, num_classes doesn't need to match.
-        all_frames=16,
+        all_frames=args.stack_size,
         tubelet_size=2,
         drop_path_rate=0.3,
         use_mean_pooling=True,
     )
-    ckpt = torch.load(args.ckpt_path, map_location="cuda")  # cpu
+    ckpt = torch.load(args.ckpt_path, map_location=args.device)  # cpu
     for model_key in ["model", "module"]:
         if model_key in ckpt:
             ckpt = ckpt[model_key]
@@ -244,7 +319,9 @@ def extract_feature(args):
             list(start_idx_range(len(vr)))[0:10]
         )  # list of frames to use ie [0,4,8,12,16,...]
         for start_idx in start_idx_range(len(vr)):
-            data = vr.get_batch(np.arange(start_idx, start_idx + 16)).asnumpy()
+            data = vr.get_batch(
+                np.arange(start_idx, start_idx + (args.stack_size or 16))
+            ).asnumpy()
             frame = torch.from_numpy(data)  # torch.Size([16, 566, 320, 3])
             frame_q = transform(frame)  # torch.Size([3, 16, 224, 224])
             input_data = frame_q.unsqueeze(0).cuda()
@@ -262,4 +339,5 @@ def extract_feature(args):
 
 if __name__ == "__main__":
     args = get_args()
+    print(args)
     extract_feature(args)
